@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="Icons">
+    <file>microsoft_excel_logo_primary_resized.jpg</file>
+    <file>ExcelToPDF.jpg</file>
+    <file>PDIR.jpg</file>
+    <file>PPC.jpg</file>
+    <file>Web Scrapper (2).jpg</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,148 @@
+class DBHelper():
+    def __init__(self):
+        self.conn=sqlite3.connect("sdms.db")
+        self.c=self.conn.cursor()
+        self.c.execute("CREATE TABLE IF NOT EXISTS students(roll INTEGER,name TEXT,gender INTEGER,branch INTEGER,year INTEGER,academic_year INTEGER,address TEXT,mobile INTEGER)")
+        self.c.execute("CREATE TABLE IF NOT EXISTS payments(reciept_no INTEGER,roll INTEGER,fee INTEGER,semester INTEGER,reciept_date TEXT)")
+        self.c.execute("CREATE TABLE IF NOT EXISTS genders(id INTEGER,name TEXT)")
+        self.c.execute("CREATE TABLE IF NOT EXISTS branches(id INTEGER,name TEXT)")
+
+
+
+    def addStudent(self,roll,name,gender,branch,year,academic_year,address,mobile):
+        try:
+            self.c.execute("INSERT INTO students (roll,name,gender,branch,year,academic_year,address,mobile) VALUES (?,?,?,?,?,?,?,?)",(roll,name,gender,branch,year,academic_year,address,mobile))
+            self.conn.commit()
+            self.c.close()
+            self.conn.close()
+            QMessageBox.information(QMessageBox(),'Successful','Student is added successfully to the database.')
+        except Exception:
+            QMessageBox.warning(QMessageBox(), 'Error', 'Could not add student to the database.')
+
+
+ 
+    def searchStudent(self,roll):
+        #we make a DB query to search for a student holding the roll number. if we find any then we pass the result returned
+        #from the DB to our custom function showStudent() which then analyze the list.
+        self.c.execute("SELECT * from students WHERE roll="+str(roll))
+        self.data=self.c.fetchone()
+ 
+        #if there is no data returned by above cursor function fetchone() then it means there is no record
+        #holding the roll number. so we show a warning box saying the same and return from the function.
+        if not self.data:
+            QMessageBox.warning(QMessageBox(), 'Error', 'Could not find any student with roll no '+str(roll))
+            return None
+        self.list=[]
+        for i in range(0,8):
+            self.list.append(self.data[i])
+        self.c.close()
+        self.conn.close()
+        #it's out custom function which analyzes the list and show the output in tabular form to the application user.
+        showStudent(self.list)
+
+
+ 
+ 
+    #this function is the most important and complex part of the whole program. This adds the payment made by the student to the
+    #database. roll and fee are integers and semester it either 0 for Odd semester or 1 for Even semester.
+    #there are some posibilites here. They are-----
+    #1.)admin tries to add a fresh entry but he has put semester as Even when the student has not paid the Odd semester fee
+    #2.)admin tries to add entry for a student who has already paid his/her both semester fees
+    #3.)admin tries to add entry for astudent for the same semester twice
+
+ 
+    def addPayment(self,roll,fee,semester):
+        reciept_no=int(time.time())
+        date=time.strftime("%b %d %Y %H:%M:%S")
+        try:
+            #we check to see if any payment record exists in the database with the roll number
+            self.c.execute("SELECT * from payments WHERE roll=" + str(roll))
+            self.conn.commit()
+ 
+            #if it does not exists then following possibilities may occur.
+            if not self.c.fetchone():
+                #admin tries to add fee for Even semester but student has not paid the Odd semester.
+                if semester == 1:
+                    #query to check if there is any record with same roll number and semester as 0 which is Odd Semester
+                    self.c.execute("SELECT * from payments WHERE roll=" + str(roll) + " AND semester=0")
+ 
+                    #above query fails. that means student has not paid the Odd semester fee. So we show
+                    #a dialog saying the same.
+                    if not self.c.fetchone():
+                        QMessageBox.warning(QMessageBox(), 'Error',
+                                            'Student with roll no ' + str(
+                                                roll) + ' has Odd Semester fee payment due.Pay that first.')
+                        return None
+                else:
+                    #admin is making entry for Odd semester first. That's okay. Go ahead.
+                    self.c.execute("INSERT INTO payments (reciept_no,roll,fee,semester,reciept_date) VALUES (?,?,?,?,?)",(reciept_no, roll, fee, semester, date))
+                    self.conn.commit()
+                QMessageBox.information(QMessageBox(), 'Successful','Payment is added successfully to the database.\nReference ID=' + str(reciept_no))
+            else:
+ 
+                #as there is too much query execution for the same cursor object sometimes it acts weird. So to be
+                #in the safe side we execute the same query again which is searching payments table
+                #for records holding the given roll number.
+                self.c.execute("SELECT * from payments WHERE roll=" + str(roll))
+ 
+                #we fetch all records.
+                self.data = self.c.fetchall()
+ 
+                #if student has more than one records in the database that means he/she has paid both semester fees.
+                if len(self.data) == 2:
+                    QMessageBox.warning(QMessageBox(), 'Error','Student with roll no ' + str(roll) + ' has already paid both semester fees.')
+                #admin is trying to make Even semester payment. We check if there is any record for Odd semester.
+                #if it fails then it means it has to make the payment for the Odd semester first.
+                #otherwise make the payment.
+                elif semester==1:
+                    self.c.execute("SELECT * from payments WHERE roll=" + str(roll)+" AND semester=0")
+                    if not self.c.fetchone():
+                        QMessageBox.warning(QMessageBox(), 'Error','Student with roll no ' + str(roll) + ' has Odd Semester fee payment due.Pay that first.')
+                    else:
+                        self.c.execute(
+                            "INSERT INTO payments (reciept_no,roll,fee,semester,reciept_date) VALUES (?,?,?,?,?)",
+                            (reciept_no, roll, fee, semester, date))
+                        self.conn.commit()
+                        QMessageBox.information(QMessageBox(), 'Successful',
+                                                'Payment is added successfully to the database.\nReference ID=' + str(
+ 
+                                                    reciept_no))
+                #here we try to check if admin is trying to make payment for the same semester twice.
+                elif self.data[0][3] == semester:
+                    QMessageBox.warning(QMessageBox(), 'Error','Student with roll no ' + str(roll) + ' has already paid this semester fees.')
+                #everything is fine. Go ahead and make the payment.
+                else:
+                    self.c.execute(
+                        "INSERT INTO payments (reciept_no,roll,fee,semester,reciept_date) VALUES (?,?,?,?,?)",
+                        (reciept_no, roll, fee, semester, date))
+                    self.conn.commit()
+                    QMessageBox.information(QMessageBox(), 'Successful',
+                                            'Payment is added successfully to the database.\nReference ID=' + str(
+                                                reciept_no))
+ 
+        except Exception:
+            QMessageBox.warning(QMessageBox(), 'Error', 'Could not add payment to the database.')
+ 
+        self.c.close()
+        self.conn.close()
+ 
+        #similar to the searchStudent() it will search for any record holding the roll number in the database.
+        #it will then pass the returned list from the DB to the function searchStudentFunction()
+        #here in the query we use ORDER BY reciept_no DESC so that rows with semester value as 1 comes first
+        #if it exists. Then we can be sure that student has paid his/her both semester fees as we overcame
+        #the possibility of adding Odd semester fee first. if there are any record for two semester
+        #so they will come as semester=1 first then semester=0.
+
+
+    def searchPayment(self,roll):
+        self.c.execute("SELECT * from payments WHERE roll="+str(roll)+" ORDER BY reciept_no DESC")
+        self.data=self.c.fetchone()
+        if not self.data:
+            QMessageBox.warning(QMessageBox(), 'Error', 'Could not find any student with roll no '+str(roll))
+            return None
+        self.list=self.data
+        # for j in range(6):
+        #     self.list.append(self.data[j])
+        self.c.close()
+        self.conn.close()
+        showPaymentFunction(self.list)

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1220</width>
+    <height>839</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>674</width>
+    <height>132</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>MS Reference Sans Serif</family>
+    <pointsize>9</pointsize>
+    <weight>50</weight>
+    <bold>false</bold>
+   </font>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" colspan="3">
+     <widget class="QWidget" name="widget_3" native="true">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/Main/NR-Hytech Banner.png);
+border-image: url(:/Main/NR-Hytech Banner1.jpg);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QWidget" name="widget_2" native="true">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/Main/products.jpg);
+border-image: url(:/Main/products1.jpg);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QWidget" name="widget" native="true">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/Main/Screenshot 2019-02-09 16.51.25.png);
+border-image: url(:/Main/Screenshot 2019-02-09 16.51.253.jpg);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QWidget" name="widget_4" native="true">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/Main/broucher.jpg);
+border-image: url(:/Main/broucher1.jpg);
+border-image: url(:/Main/broucher1.jpg);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="3">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1220</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCustomer_Details">
+    <property name="font">
+     <font>
+      <family>MS Reference Sans Serif</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>Customer Details   </string>
+    </property>
+    <addaction name="actionEnter_Customer_Details"/>
+    <addaction name="actionSearch_Customer_Details"/>
+   </widget>
+   <widget class="QMenu" name="menuQMS">
+    <property name="font">
+     <font>
+      <family>MS Reference Sans Serif</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>QMS   </string>
+    </property>
+    <widget class="QMenu" name="menuNon_Conformance">
+     <property name="font">
+      <font>
+       <family>MS Reference Sans Serif</family>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>Non-Conformance</string>
+     </property>
+     <addaction name="actionCustomer"/>
+     <addaction name="actionInhouse"/>
+    </widget>
+    <addaction name="actionPDIR"/>
+    <addaction name="menuNon_Conformance"/>
+   </widget>
+   <widget class="QMenu" name="menuPart_Production_Calculator">
+    <property name="font">
+     <font>
+      <family>MS Reference Sans Serif</family>
+      <pointsize>8</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="title">
+     <string>Part Production Calculator   </string>
+    </property>
+    <addaction name="actionPPC"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About   </string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuReiceive_Material">
+    <property name="title">
+     <string>Plans   </string>
+    </property>
+    <addaction name="actionCaliberation"/>
+    <addaction name="actionMachine_Capability"/>
+    <addaction name="actionSPC"/>
+    <addaction name="actionMSA"/>
+    <addaction name="actionVender_Audits"/>
+   </widget>
+   <addaction name="menuCustomer_Details"/>
+   <addaction name="menuQMS"/>
+   <addaction name="menuPart_Production_Calculator"/>
+   <addaction name="menuReiceive_Material"/>
+   <addaction name="menuAbout"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="WebScrapingtool"/>
+   <addaction name="separator"/>
+   <addaction name="actionPPC"/>
+   <addaction name="actionPDIR"/>
+   <addaction name="separator"/>
+   <addaction name="actionEXCELToPDF"/>
+   <addaction name="separator"/>
+  </widget>
+  <action name="actionEnter_Customer_Details">
+   <property name="text">
+    <string>Enter and Edit Customer Details</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Reference Sans Serif</family>
+    </font>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+  </action>
+  <action name="actionSearch_Customer_Details">
+   <property name="text">
+    <string>Search Customer Details</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Reference Sans Serif</family>
+    </font>
+   </property>
+  </action>
+  <action name="actionPDIR">
+   <property name="icon">
+    <iconset resource="Resource/Rersources.qrc">
+     <normaloff>:/Icons/PDIR.jpg</normaloff>:/Icons/PDIR.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>PDIR</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Reference Sans Serif</family>
+    </font>
+   </property>
+  </action>
+  <action name="actionCustomer">
+   <property name="text">
+    <string>Customer</string>
+   </property>
+  </action>
+  <action name="actionInhouse">
+   <property name="text">
+    <string>Inhouse</string>
+   </property>
+  </action>
+  <action name="actionCaliberation">
+   <property name="text">
+    <string>Caliberation</string>
+   </property>
+  </action>
+  <action name="actionMachine_Capability">
+   <property name="text">
+    <string>Machine Capability</string>
+   </property>
+  </action>
+  <action name="actionSPC">
+   <property name="text">
+    <string>SPC</string>
+   </property>
+  </action>
+  <action name="actionMSA">
+   <property name="text">
+    <string>MSA</string>
+   </property>
+  </action>
+  <action name="actionVender_Audits">
+   <property name="text">
+    <string>Vender Audits</string>
+   </property>
+  </action>
+  <action name="actionPPC">
+   <property name="icon">
+    <iconset resource="Resource/Rersources.qrc">
+     <normaloff>:/Icons/PPC.jpg</normaloff>:/Icons/PPC.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>PPC</string>
+   </property>
+  </action>
+  <action name="WebScrapingtool">
+   <property name="icon">
+    <iconset resource="Resource/Rersources.qrc">
+     <normaloff>:/Icons/Web Scrapper (2).jpg</normaloff>:/Icons/Web Scrapper (2).jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Web Scraping tool</string>
+   </property>
+   <property name="toolTip">
+    <string>Web Scraping tool</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionEXCELToPDF">
+   <property name="icon">
+    <iconset resource="Resource/Rersources.qrc">
+     <normaloff>:/Icons/microsoft_excel_logo_primary_resized.jpg</normaloff>:/Icons/microsoft_excel_logo_primary_resized.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>EXCELToPDF</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="Resource/Rersources.qrc"/>
+  <include location="Resource/MainPage.qrc"/>
+ </resources>
+ <connections/>
+</ui>

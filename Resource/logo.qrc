@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>Q-LOOP.jpeg</file>
+  </qresource>
+</RCC>

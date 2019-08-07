@@ -1,0 +1,16 @@
+<RCC>
+  <qresource prefix="Main">
+    <file>NR-Hytech Banner31.jpg</file>
+    <file>Screenshot 2019-02-09 16.51.253.jpg</file>
+    <file>products1.jpg</file>
+    <file>broucher1.jpg</file>
+    <file>NR-Hytech Banner3.jpg</file>
+    <file>NR-Hytech Banner2.jpg</file>
+    <file>NR-Hytech Banner1.jpg</file>
+    <file>broucher - Copy.jpg</file>
+    <file>Screenshot 2019-02-09 16.51.25.png</file>
+    <file>broucher.jpg</file>
+    <file>products.jpg</file>
+    <file>NR-Hytech Banner.png</file>
+  </qresource>
+</RCC>

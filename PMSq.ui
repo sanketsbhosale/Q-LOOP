@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>2000</width>
+    <height>2000</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>674</width>
+    <height>132</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>MS Reference Sans Serif</family>
+    <pointsize>9</pointsize>
+    <weight>50</weight>
+    <bold>false</bold>
+   </font>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QMdiArea" name="mdiArea"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>2000</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCustomer_Details">
+    <property name="font">
+     <font>
+      <family>MS Reference Sans Serif</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>Customer Details   </string>
+    </property>
+    <addaction name="actionEnter_Customer_Details"/>
+    <addaction name="actionSearch_Customer_Details"/>
+   </widget>
+   <widget class="QMenu" name="menuQMS">
+    <property name="font">
+     <font>
+      <family>MS Reference Sans Serif</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>QMS   </string>
+    </property>
+    <widget class="QMenu" name="menuNon_Conformance">
+     <property name="font">
+      <font>
+       <family>MS Reference Sans Serif</family>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>Non-Conformance</string>
+     </property>
+     <addaction name="actionCustomer"/>
+     <addaction name="actionInhouse"/>
+    </widget>
+    <addaction name="actionPDIR"/>
+    <addaction name="menuNon_Conformance"/>
+   </widget>
+   <widget class="QMenu" name="menuPart_Production_Calculator">
+    <property name="font">
+     <font>
+      <family>MS Reference Sans Serif</family>
+      <pointsize>8</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="title">
+     <string>Part Production Calculator   </string>
+    </property>
+    <addaction name="actionPPC"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About   </string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuReiceive_Material">
+    <property name="title">
+     <string>Plans   </string>
+    </property>
+    <addaction name="actionCaliberation"/>
+    <addaction name="actionMachine_Capability"/>
+    <addaction name="actionSPC"/>
+    <addaction name="actionMSA"/>
+    <addaction name="actionVender_Audits"/>
+   </widget>
+   <addaction name="menuCustomer_Details"/>
+   <addaction name="menuQMS"/>
+   <addaction name="menuPart_Production_Calculator"/>
+   <addaction name="menuReiceive_Material"/>
+   <addaction name="menuAbout"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionEnter_Customer_Details">
+   <property name="text">
+    <string>Enter and Edit Customer Details</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Reference Sans Serif</family>
+    </font>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+  </action>
+  <action name="actionSearch_Customer_Details">
+   <property name="text">
+    <string>Search Customer Details</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Reference Sans Serif</family>
+    </font>
+   </property>
+  </action>
+  <action name="actionPDIR">
+   <property name="text">
+    <string>PDIR</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Reference Sans Serif</family>
+    </font>
+   </property>
+  </action>
+  <action name="actionAubiuf">
+   <property name="text">
+    <string>aubiuf</string>
+   </property>
+  </action>
+  <action name="actionMRM">
+   <property name="text">
+    <string>MRM</string>
+   </property>
+  </action>
+  <action name="actionCustomer">
+   <property name="text">
+    <string>Customer</string>
+   </property>
+  </action>
+  <action name="actionInhouse">
+   <property name="text">
+    <string>Inhouse</string>
+   </property>
+  </action>
+  <action name="actionEdit_Customer_Details">
+   <property name="text">
+    <string>Edit Customer Details</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Reference Sans Serif</family>
+    </font>
+   </property>
+  </action>
+  <action name="actionInput_Caliberation">
+   <property name="text">
+    <string>Input Caliberation</string>
+   </property>
+  </action>
+  <action name="actionShow_Caliberation">
+   <property name="text">
+    <string>Show Caliberation</string>
+   </property>
+  </action>
+  <action name="actionEdit_Caliberation">
+   <property name="text">
+    <string>Edit Caliberation</string>
+   </property>
+  </action>
+  <action name="actionInput_Machine_Capability">
+   <property name="text">
+    <string>Input Machine Capability</string>
+   </property>
+  </action>
+  <action name="actionEdit_Machine_Capabilty">
+   <property name="text">
+    <string>Edit Machine Capabilty</string>
+   </property>
+  </action>
+  <action name="actionShow_Machine_Capabilty">
+   <property name="text">
+    <string>Show Machine Capabilty</string>
+   </property>
+  </action>
+  <action name="actionInput_SPC">
+   <property name="text">
+    <string>Input SPC</string>
+   </property>
+  </action>
+  <action name="actionEdit_SPC">
+   <property name="text">
+    <string>Edit SPC</string>
+   </property>
+  </action>
+  <action name="actionShow_SPC">
+   <property name="text">
+    <string>Show SPC</string>
+   </property>
+  </action>
+  <action name="actionInput_MSA">
+   <property name="text">
+    <string>Input MSA</string>
+   </property>
+  </action>
+  <action name="actionEdit_MSA">
+   <property name="text">
+    <string>Edit MSA</string>
+   </property>
+  </action>
+  <action name="actionShow_MSA">
+   <property name="text">
+    <string>Show MSA</string>
+   </property>
+  </action>
+  <action name="actionInput_Vender_Audits">
+   <property name="text">
+    <string>Input Vender Audits</string>
+   </property>
+  </action>
+  <action name="actionEdit_Vender_Audits">
+   <property name="text">
+    <string>Edit Vender Audits</string>
+   </property>
+  </action>
+  <action name="actionShow_Vender_Audits">
+   <property name="text">
+    <string>Show Vender Audits</string>
+   </property>
+  </action>
+  <action name="actionInput_Internal_ISO_Audits">
+   <property name="text">
+    <string>Input Internal ISO Audits</string>
+   </property>
+  </action>
+  <action name="actionEdit_Internal_ISO_Audits">
+   <property name="text">
+    <string>Edit Internal ISO Audits </string>
+   </property>
+  </action>
+  <action name="actionCaliberation">
+   <property name="text">
+    <string>Caliberation</string>
+   </property>
+  </action>
+  <action name="actionMachine_Capability">
+   <property name="text">
+    <string>Machine Capability</string>
+   </property>
+  </action>
+  <action name="actionSPC">
+   <property name="text">
+    <string>SPC</string>
+   </property>
+  </action>
+  <action name="actionMSA">
+   <property name="text">
+    <string>MSA</string>
+   </property>
+  </action>
+  <action name="actionVender_Audits">
+   <property name="text">
+    <string>Vender Audits</string>
+   </property>
+  </action>
+  <action name="actionPPC">
+   <property name="text">
+    <string>PPC</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
