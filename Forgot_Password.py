@@ -10,7 +10,6 @@ class Ui_Forgot_Password(object):
         global a,b,c
 
         entered_Email=str(self.lineEdit.text())
-        #entered_Email="sanketsbhosale2016@gmail.com"
         connection=sqlite3.connect("loginDB.db")
         c=connection.cursor()
         
@@ -23,8 +22,8 @@ class Ui_Forgot_Password(object):
         conn=smtplib.SMTP('smtp.gmail.com',587)
         conn.ehlo()
         conn.starttls()
-        conn.login('123sampleusers123@gmail.com','sample456')
-        conn.sendmail('123sampleusers123@gmail.com',entered_Email,"Your Password is " + row[2] )
+        conn.login('your Email','your password')
+        conn.sendmail('your email',entered_Email,"Your Password is " + row[2] )
         conn.quit()
         
         self.showMessageBox("Forgot Password","Your Password is " + row[2] )
